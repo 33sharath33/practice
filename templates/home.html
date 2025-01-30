@@ -7,13 +7,24 @@
 </head>
 <body>
     <h2>To-Do List</h2>
+    
+    <!-- Task Submission Form -->
     <form action="/add" method="POST">
-        <input type="text" name="task" required>
+        <input type="text" name="task" placeholder="Enter a task" required>
         <button type="submit">Add Task</button>
     </form>
+
+    <br>
+    
+    <!-- Show Tasks Button -->
+    <button onclick="window.location.reload();">Show Tasks</button>
+    
     <ul>
         {% for task in tasks %}
-            <li>{{ task }} <a href="/delete/{{ loop.index0 }}">Delete</a></li>
+            <li>
+                {{ task.content }} 
+                <a href="/delete/{{ task.content }}">[Delete]</a>
+            </li>
         {% endfor %}
     </ul>
 </body>
